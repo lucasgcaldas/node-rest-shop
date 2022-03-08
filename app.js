@@ -7,7 +7,10 @@ const mongoose = require('mongoose');
 const productRoutes = require('./api/routes/products');
 const orderRoutes = require('./api/routes/orders');
 
-mongoose.connect('mongodb+srv://node-shop:' + process.env.MONGO_ATLAS_PW + '@node-rest-shop.dxvrk.mongodb.net/myFirstDatabase?retryWrites=true&w=majority');
+mongoose.connect('mongodb://node-shop:'
+                + process.env.MONGO_ATLAS_PW 
+                + '@node-rest-shop-shard-00-00.dxvrk.mongodb.net:27017,node-rest-shop-shard-00-01.dxvrk.mongodb.net:27017,node-rest-shop-shard-00-02.dxvrk.mongodb.net:27017/myFirstDatabase?ssl=true&replicaSet=atlas-v42lsz-shard-0&authSource=admin&retryWrites=true&w=majority'
+);
 
 mongoose.Promise = global.Promise;
 

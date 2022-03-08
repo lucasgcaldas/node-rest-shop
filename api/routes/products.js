@@ -8,7 +8,7 @@ const storage = multer.diskStorage({
         cb(null, './uploads/');
     }, 
     filename: function(req, file, cb) {
-        cb(null, new Date().toISOString + file.originalname);
+        cb(null, new Date().toISOString() + file.originalname);
     }
 });
 
@@ -63,7 +63,6 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", upload.single('productImage'), (req, res, next) => {
-    console.log(req.file);
     const product = new Product({
         _id: new mongoose.Types.ObjectId(),
         name: req.body.name,
